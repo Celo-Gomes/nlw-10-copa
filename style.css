@@ -1,0 +1,155 @@
+
+*{             /*indica que todos elementos terão estas config*/
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {   /*Seleciona a raiz HTML*/
+    --card-tittle-border-color: #746615; /*criação de variável: --nome-var: cor;*/
+    --card-color-primary: #f7dd43; 
+    --card-bg-color: #1d1c19;
+    --bg: url(./assets/bg-yellow.svg)
+    /*normalmente aqui fica os valores padrões*/
+}
+body.blue {
+    --card-tittle-border-color: #338af3;
+    --card-color-primary: #338af3;
+    --card-bg-color: #202024;
+    --bg: url(./assets/bg-blue.svg)
+}
+bodt.green {
+    --card-tittle-border-color: #047C3f;
+    --card-color-primary: #047C3f;
+    --card-bg-color: #1a1f1b;
+    --bg: url(./assets/bg-green.svg)
+}
+
+ul{
+    list-style: none;
+}
+body{
+    background-color: #121214; 
+             /* ao digitar cor numerica usar'#'' */
+    background-image: var(--bg);
+    /*background-position: top center ; /*centraliza e ajusta ao topo para q ue não quebre*/
+    /*background-position-y: top;
+      background-position-x: center;  sem agrupamento*/
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover; /*cobre toda a superficie, 'background-position: top center'*/
+    
+}
+body * {
+    font-family: 'Roboto', sans-serif;
+}
+#app{
+    width: fit-content; 
+          /*ajusta a largura do div ao conteúdo*/
+    margin: auto;
+    padding-top: 52px;
+}
+header{
+    margin-bottom: 63px;
+    text-align: center;
+}
+#cards{
+    display: flex;  /*elementos ficarão alinhados lateralmente*/
+    flex-direction: column; /*corrige alinhamento*/
+    gap: 32px;
+}
+.card{
+    padding: 32px 23px;
+    text-align: center;
+    background: var(--card-bg-color);
+    border-bottom: 2px solid var(--card-color-primary);
+    border-radius: 6px;
+}
+.card h2{
+    display: flex; /*aproxima os elementos desbloq propriedades abaixo */
+    gap: 16px; /*ativado pelo flex, distancia entre elementos*/
+    justify-content: center; /*alinhamento central*/
+    align-items: center; /*alinha horizontalmente*/
+
+    padding: 8px 16px;
+    border: 1px solid var(--card-tittle-border-color);
+    border-radius: 6px;
+
+    width: fit-content;
+    margin-inline: auto;
+    margin-bottom: 53px;
+    color: #f7dd43;
+}
+.card h2 span{
+    color: #E1E1E6;
+    font-size: 14px;
+    text-transform: uppercase;
+}
+.card ul {  /*prox aula*/
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+
+    width: 270px;
+}
+.card ul li {
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /*espaço por igual entre os elementos*/ 
+}
+.card ul li + li{ /*seleciona somente o li que tenha um li anterior*/ 
+    padding-top: 24px;
+    border-top: 1px solid #323238; /*prox aula*/
+}
+.card ul li strong{
+    font-weight: 900;
+    font-size: 36px;
+    line-height: 125%; /* ???  */
+    text-align: center;
+    color: #E1E1E6;
+}
+.card h2:hover,
+.card ul li img:hover,
+.card ul li strong:hover {
+    transform: scale(1.1);
+}
+.card h2,
+.card ul li img,
+.card ul li strong {
+    transition: transform .1s;
+}
+.card {
+    opacity: 0;
+    animation: appear .1s forwards; /*mantem as opções do fim do keyframes*/
+}
+
+/* ***** Será feito por JS  ******
+.card:nth-child(1){     /*identifica uma sequencia de filhos de acordo co atributo()*/
+/*    animation-delay: 0,2s; 
+}
+.card:nth-child(2){
+    animation-delay: 0.3s;
+}
+.card:nth-child(3){
+    animation-delay: 0.4s;
+}
+  ******************* */
+@keyframes appear {
+    0% {
+        transform: translateY(-50px);
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@media (min-width: 700px){   /* regra que definira layout de acordo com tamanho da visualização da tela */
+                  /* se a largura da tela for de 700px para cima, executa as linhas abaixo*/
+    #cards {
+        flex-direction: row; /*coloca os elementos em linha, que estavam como 'column'*/
+        max-width: 670px;  /*quando largura de #cards chegar a 670px (tamanho #cards + espaço entre + #cards)...*/
+        flex-wrap: wrap;   /*faz com que o elemento seja jogado para linha de baixo*/
+                           /*este atributo evita que o prõximo elemento fique cortado na tela */
+
+    }
+}
