@@ -21,12 +21,16 @@ function createCard(date,day,games){
 }
 document.querySelector('#cards').innerHTML =
         createCard(
-            "24/11",
-            "quinta",
-            createGame('switzerland','07:00','cameroon')+
+            "24/11", //parametro date
+            "quinta", //parametro day
+            createGame('switzerland','07:00','cameroon')+ //concatenação do parametro games
             createGame('portugal','13:00','ghana')+
-            createGame('brazil','16:00','serbia')
-        )+
+            createGame(
+                'brazil', //parametro player1
+                '16:00', //parametro hour
+                'serbia' //parametro player2
+                )
+        )+ //concatenação com 2º card
 
         createCard(
             "28/11",
