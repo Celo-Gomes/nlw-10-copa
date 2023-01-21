@@ -19,7 +19,7 @@ function createCard(date,day,games){
         </div>
     `
 }
-document.querySelector('#cards').innerHTML =
+document.querySelector('#cards').innerHTML =  // *** Aqui acontece o início da chamada das funções******
         createCard(
             "24/11", //parametro date
             "quinta", //parametro day
